@@ -1,9 +1,9 @@
 ---
-Name: "Feature / Task Template"
-About: "Template for tracking features, tasks, and bugs linked to project requirements"
-Title: "[REQ-XXX] Short descriptive title"
-Labels: "enhancement"
-Assignees: ""
+name: "Feature / Task Template"
+about: "Template for tracking features, tasks, and bugs linked to project requirements"
+title: "[REQ-XXX] Short descriptive title"
+labels: "enhancement"
+assignees: ""
 ---
 
 ## Description / Purpose
