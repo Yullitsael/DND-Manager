@@ -1,6 +1,6 @@
 # DND-Manager
 
-##Overview
+## Overview
 
 This project simulates a simplified **DND Manager** used for the Dungeons & Dragons game.
 
