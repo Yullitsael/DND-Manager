@@ -70,8 +70,8 @@ public class ClientApp {
         frame = new JFrame("DND Client");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.setSize(1400, 850);
-        frame.setMinimumSize(new Dimension(1200, 750));
+        frame.setSize(1400, 920);
+        frame.setMinimumSize(new Dimension(1200, 820));
         frame.setLocationRelativeTo(null);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -140,19 +140,22 @@ public class ClientApp {
         combatantListPanel.setBorder(new EmptyBorder(8, 8, 8, 8));
         combatantListPanel.setPreferredSize(new Dimension(320, 220));
         combatantListPanel.setMinimumSize(new Dimension(320, 220));
+        combatantListPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 220));
 
 // DETAILS PANEL
         JPanel selectedPanel = new JPanel();
         selectedPanel.setLayout(new BoxLayout(selectedPanel, BoxLayout.Y_AXIS));
         selectedPanel.setBackground(PANEL_DARK);
         selectedPanel.setBorder(new EmptyBorder(16, 16, 16, 16));
-        selectedPanel.setPreferredSize(new Dimension(320, 320));
-        selectedPanel.setMinimumSize(new Dimension(320, 320));
-        selectedPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 320));
+        selectedPanel.setPreferredSize(new Dimension(320, 280));
+        selectedPanel.setMinimumSize(new Dimension(320, 280));
+        selectedPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 280));
 
         JLabel selectedTitle = new JLabel("Selected Combatant");
         selectedTitle.setFont(SUBTITLE_FONT);
         selectedTitle.setForeground(TEXT);
+
+        selectedTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         selectedNameLabel = new JLabel("-");
         selectedNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -174,15 +177,16 @@ public class ClientApp {
         statsLabel.setForeground(TEXT);
         statsLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-// Wrap both list and details in one vertical panel
-        JPanel leftContent = new JPanel();
-        leftContent.setLayout(new BoxLayout(leftContent, BoxLayout.Y_AXIS));
+// Wraps both list and details in one vertical panel
+        JPanel leftContent = new JPanel(new BorderLayout(12, 12));
         leftContent.setBackground(PANEL);
 
-        leftContent.add(combatantsTitle);
-        leftContent.add(Box.createVerticalStrut(10));
-        leftContent.add(combatantListPanel);
-        leftContent.add(Box.createVerticalStrut(12));
+        leftContent.add(combatantsTitle, BorderLayout.NORTH);
+
+        JPanel centerLeft = new JPanel(new BorderLayout(12, 12));
+        centerLeft.setBackground(PANEL);
+        centerLeft.add(combatantListPanel, BorderLayout.NORTH);
+        centerLeft.add(selectedPanel, BorderLayout.CENTER);
 
         selectedPanel.add(selectedTitle);
         selectedPanel.add(Box.createVerticalStrut(10));
@@ -194,7 +198,7 @@ public class ClientApp {
         selectedPanel.add(Box.createVerticalStrut(14));
         selectedPanel.add(statsLabel);
 
-        leftContent.add(selectedPanel);
+        leftContent.add(centerLeft, BorderLayout.CENTER);
 
         leftPanel.add(leftContent, BorderLayout.CENTER);
 
@@ -278,7 +282,7 @@ public class ClientApp {
         JScrollPane scrollPane = new JScrollPane(logArea);
         scrollPane.setBorder(BorderFactory.createLineBorder(new Color(51, 65, 85)));
         scrollPane.getViewport().setBackground(PANEL_DARK);
-        scrollPane.setPreferredSize(new Dimension(1100, 220));
+        scrollPane.setPreferredSize(new Dimension(1100, 120));
 
         logPanel.add(logTitle, BorderLayout.NORTH);
         logPanel.add(scrollPane, BorderLayout.CENTER);
